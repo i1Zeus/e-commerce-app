@@ -63,7 +63,7 @@ const AdminEditProduct = ({ onClose, productData, fetchData }) => {
     /**upload product */
   }
   const handleSubmit = async (e) => {
-    e.prevntDefault();
+    e.preventDefault();
 
     const response = await fetch(SummaryApi.updateProduct.url, {
       method: SummaryApi.updateProduct.method,
@@ -88,12 +88,12 @@ const AdminEditProduct = ({ onClose, productData, fetchData }) => {
   };
 
   return (
-    <div className="fixed w-full  h-full bg-slate-200 bg-opacity-35 top-0 left-0 right-0 bottom-0 flex justify-center items-center">
+    <div className="bg-slate-200 bg-opacity-35 fixed top-0 bottom-0 left-0 right-0 flex items-center justify-center w-full h-full">
       <div className="bg-white p-4 rounded w-full max-w-2xl h-full max-h-[80%] overflow-hidden">
-        <div className="flex justify-between items-center pb-3">
-          <h2 className="font-bold text-lg">Edit Product</h2>
+        <div className="flex items-center justify-between pb-3">
+          <h2 className="text-lg font-bold">Edit Product</h2>
           <div
-            className="w-fit ml-auto text-2xl hover:text-red-600 cursor-pointer"
+            className="w-fit hover:text-red-600 ml-auto text-2xl cursor-pointer"
             onClick={onClose}
           >
             <CgClose />
@@ -101,7 +101,7 @@ const AdminEditProduct = ({ onClose, productData, fetchData }) => {
         </div>
 
         <form
-          className="grid p-4 gap-2 overflow-y-scroll h-full pb-5"
+          className="grid h-full gap-2 p-4 pb-5 overflow-y-scroll"
           onSubmit={handleSubmit}
         >
           <label htmlFor="productName">Product Name :</label>
@@ -112,7 +112,7 @@ const AdminEditProduct = ({ onClose, productData, fetchData }) => {
             name="productName"
             value={data.productName}
             onChange={handleOnChange}
-            className="p-2 bg-slate-100 border rounded"
+            className="bg-slate-100 p-2 border rounded"
             required
           />
 
@@ -126,7 +126,7 @@ const AdminEditProduct = ({ onClose, productData, fetchData }) => {
             value={data.brandName}
             name="brandName"
             onChange={handleOnChange}
-            className="p-2 bg-slate-100 border rounded"
+            className="bg-slate-100 p-2 border rounded"
             required
           />
 
@@ -138,7 +138,7 @@ const AdminEditProduct = ({ onClose, productData, fetchData }) => {
             value={data.category}
             name="category"
             onChange={handleOnChange}
-            className="p-2 bg-slate-100 border rounded"
+            className="bg-slate-100 p-2 border rounded"
           >
             <option value={""}>Select Category</option>
             {productCategory.map((el, index) => {
@@ -154,8 +154,8 @@ const AdminEditProduct = ({ onClose, productData, fetchData }) => {
             Product Image :
           </label>
           <label htmlFor="uploadImageInput">
-            <div className="p-2 bg-slate-100 border rounded h-32 w-full flex justify-center items-center cursor-pointer">
-              <div className="text-slate-500 flex justify-center items-center flex-col gap-2">
+            <div className="bg-slate-100 flex items-center justify-center w-full h-32 p-2 border rounded cursor-pointer">
+              <div className="text-slate-500 flex flex-col items-center justify-center gap-2">
                 <span className="text-4xl">
                   <FaCloudUploadAlt />
                 </span>
@@ -174,7 +174,7 @@ const AdminEditProduct = ({ onClose, productData, fetchData }) => {
               <div className="flex items-center gap-2">
                 {data.productImage.map((el, index) => {
                   return (
-                    <div className="relative group">
+                    <div className="group relative">
                       <img
                         src={el}
                         alt={el}
@@ -188,7 +188,7 @@ const AdminEditProduct = ({ onClose, productData, fetchData }) => {
                       />
 
                       <div
-                        className="absolute bottom-0 right-0 p-1 text-white bg-red-600 rounded-full hidden group-hover:block cursor-pointer"
+                        className="group-hover:block absolute bottom-0 right-0 hidden p-1 text-white bg-red-600 rounded-full cursor-pointer"
                         onClick={() => handleDeleteProductImage(index)}
                       >
                         <MdDelete />
@@ -198,7 +198,7 @@ const AdminEditProduct = ({ onClose, productData, fetchData }) => {
                 })}
               </div>
             ) : (
-              <p className="text-red-600 text-xs">
+              <p className="text-xs text-red-600">
                 *Please upload product image
               </p>
             )}
@@ -214,7 +214,7 @@ const AdminEditProduct = ({ onClose, productData, fetchData }) => {
             value={data.price}
             name="price"
             onChange={handleOnChange}
-            className="p-2 bg-slate-100 border rounded"
+            className="bg-slate-100 p-2 border rounded"
             required
           />
 
@@ -228,7 +228,7 @@ const AdminEditProduct = ({ onClose, productData, fetchData }) => {
             value={data.sellingPrice}
             name="sellingPrice"
             onChange={handleOnChange}
-            className="p-2 bg-slate-100 border rounded"
+            className="bg-slate-100 p-2 border rounded"
             required
           />
 
@@ -236,7 +236,7 @@ const AdminEditProduct = ({ onClose, productData, fetchData }) => {
             Description :
           </label>
           <textarea
-            className="h-28 bg-slate-100 border resize-none p-1"
+            className="h-28 bg-slate-100 p-1 border resize-none"
             placeholder="enter product description"
             rows={3}
             onChange={handleOnChange}
@@ -244,7 +244,7 @@ const AdminEditProduct = ({ onClose, productData, fetchData }) => {
             value={data.description}
           ></textarea>
 
-          <button className="px-3 py-2 bg-red-600 text-white mb-10 hover:bg-red-700">
+          <button className="hover:bg-red-700 px-3 py-2 mb-10 text-white bg-red-600">
             Update Product
           </button>
         </form>

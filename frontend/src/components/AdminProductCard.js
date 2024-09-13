@@ -7,12 +7,12 @@ const AdminProductCard = ({ data, fetchData }) => {
   const [editProduct, setEditProduct] = useState(false);
 
   return (
-    <div className="bg-white p-4 rounded ">
+    <div className=" p-4 bg-white rounded">
       <div className="w-40">
-        <div className="w-32 h-32 flex justify-center items-center">
+        <div className="flex items-center justify-center w-32 h-32">
           <img
             src={data?.productImage[0]}
-            className="mx-auto object-fill h-full"
+            className="object-fill h-full mx-auto"
           />
         </div>
         <h1 className="text-ellipsis line-clamp-2">{data.productName}</h1>
@@ -23,7 +23,7 @@ const AdminProductCard = ({ data, fetchData }) => {
           </p>
 
           <div
-            className="w-fit ml-auto p-2 bg-green-100 hover:bg-green-600 rounded-full hover:text-white cursor-pointer"
+            className="w-fit hover:bg-green-600 hover:text-white p-2 ml-auto bg-green-100 rounded-full cursor-pointer"
             onClick={() => setEditProduct(true)}
           >
             <MdModeEditOutline />

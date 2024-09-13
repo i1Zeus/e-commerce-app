@@ -32,8 +32,8 @@ const CategoryWiseProductDisplay = ({ category, heading }) => {
   }, []);
 
   return (
-    <div className="container mx-auto px-4 my-6 relative">
-      <h2 className="text-2xl font-semibold py-4">{heading}</h2>
+    <div className="container relative px-4 mx-auto my-6">
+      <h2 className="py-4 text-2xl font-semibold">{heading}</h2>
 
       <div className="grid grid-cols-[repeat(auto-fit,minmax(300px,320px))] justify-between md:gap-6 overflow-x-scroll scrollbar-none transition-all">
         {loading
@@ -41,14 +41,14 @@ const CategoryWiseProductDisplay = ({ category, heading }) => {
               return (
                 <div className="w-full min-w-[280px]  md:min-w-[320px] max-w-[280px] md:max-w-[320px]  bg-white rounded-sm shadow ">
                   <div className="bg-slate-200 h-48 p-4 min-w-[280px] md:min-w-[145px] flex justify-center items-center animate-pulse"></div>
-                  <div className="p-4 grid gap-3">
-                    <h2 className="font-medium text-base md:text-lg text-ellipsis line-clamp-1 text-black p-1 py-2 animate-pulse rounded-full bg-slate-200"></h2>
-                    <p className="capitalize text-slate-500 p-1 animate-pulse rounded-full bg-slate-200  py-2"></p>
+                  <div className="grid gap-3 p-4">
+                    <h2 className="md:text-lg text-ellipsis line-clamp-1 animate-pulse bg-slate-200 p-1 py-2 text-base font-medium text-black rounded-full"></h2>
+                    <p className="text-slate-500 animate-pulse bg-slate-200 p-1 py-2 capitalize rounded-full"></p>
                     <div className="flex gap-3">
-                      <p className="text-red-600 font-medium p-1 animate-pulse rounded-full bg-slate-200 w-full  py-2"></p>
-                      <p className="text-slate-500 line-through p-1 animate-pulse rounded-full bg-slate-200 w-full  py-2"></p>
+                      <p className="animate-pulse bg-slate-200 w-full p-1 py-2 font-medium text-red-600 rounded-full"></p>
+                      <p className="text-slate-500 animate-pulse bg-slate-200 w-full p-1 py-2 line-through rounded-full"></p>
                     </div>
-                    <button className="text-sm  text-white px-3  rounded-full bg-slate-200  py-2 animate-pulse"></button>
+                    <button className="bg-slate-200 animate-pulse px-3 py-2 text-sm text-white rounded-full"></button>
                   </div>
                 </div>
               );
@@ -63,18 +63,18 @@ const CategoryWiseProductDisplay = ({ category, heading }) => {
                   <div className="bg-slate-200 h-48 p-4 min-w-[280px] md:min-w-[145px] flex justify-center items-center">
                     <img
                       src={product.productImage[0]}
-                      className="object-scale-down h-full hover:scale-110 transition-all mix-blend-multiply"
+                      className="hover:scale-110 mix-blend-multiply object-scale-down h-full transition-all"
                     />
                   </div>
-                  <div className="p-4 grid gap-3">
-                    <h2 className="font-medium text-base md:text-lg text-ellipsis line-clamp-1 text-black">
+                  <div className="grid gap-3 p-4">
+                    <h2 className="md:text-lg text-ellipsis line-clamp-1 text-base font-medium text-black">
                       {product?.productName}
                     </h2>
-                    <p className="capitalize text-slate-500">
+                    <p className="text-slate-500 capitalize">
                       {product?.category}
                     </p>
                     <div className="flex gap-3">
-                      <p className="text-red-600 font-medium">
+                      <p className="font-medium text-red-600">
                         {displayINRCurrency(product?.sellingPrice)}
                       </p>
                       <p className="text-slate-500 line-through">

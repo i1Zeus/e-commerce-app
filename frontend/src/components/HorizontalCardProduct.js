@@ -67,7 +67,9 @@ const HorizontalCardProduct = ({ category, heading }) => {
                 <div className="w-full min-w-[280px] md:min-w-[320px] max-w-[280px] md:max-w-[320px] h-36 bg-white rounded-sm shadow flex">
                   <div className="bg-slate-200 h-full p-4 min-w-[120px] md:min-w-[145px] animate-pulse"></div>
                   <div className="grid w-full gap-2 p-4">
-                    <h2 className="md:text-lg text-ellipsis line-clamp-1 bg-slate-200 animate-pulse p-1 text-base font-medium text-black rounded-full"></h2>
+                    <h2 className="md:text-lg text-ellipsis line-clamp-1 bg-slate-200 animate-pulse p-1 text-base font-medium text-black rounded-full">
+                      <p className="sr-only">loading</p>
+                    </h2>
                     <p className="text-slate-500 bg-slate-200 animate-pulse p-1 capitalize rounded-full"></p>
                     <div className="flex w-full gap-3">
                       <p className="bg-slate-200 animate-pulse w-full p-1 font-medium text-red-600 rounded-full"></p>

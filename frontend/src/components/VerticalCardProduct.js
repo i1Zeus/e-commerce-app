@@ -70,7 +70,9 @@ const VerticalCardProduct = ({ category, heading }) => {
                 >
                   <div className="bg-slate-200 h-48 p-4 min-w-[280px] md:min-w-[145px] flex justify-center items-center animate-pulse"></div>
                   <div className="grid gap-3 p-4">
-                    <h2 className="md:text-lg text-ellipsis line-clamp-1 animate-pulse bg-slate-200 p-1 py-2 text-base font-medium text-black rounded-full"></h2>
+                    <h2 className="md:text-lg text-ellipsis line-clamp-1 animate-pulse bg-slate-200 p-1 py-2 text-base font-medium text-black rounded-full">
+                      <p className="sr-only">loading</p>
+                    </h2>
                     <p className="text-slate-500 animate-pulse bg-slate-200 p-1 py-2 capitalize rounded-full"></p>
                     <div className="flex gap-3">
                       <p className="animate-pulse bg-slate-200 w-full p-1 py-2 font-medium text-red-600 rounded-full"></p>

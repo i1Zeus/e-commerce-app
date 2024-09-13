@@ -7,7 +7,6 @@ import productCategory from "../helpers/productCategory";
 const CategoryProduct = () => {
   const [data, setData] = useState([]);
   const navigate = useNavigate();
-  const [loading, setLoading] = useState(false);
   const location = useLocation();
   const urlSearch = new URLSearchParams(location.search);
   const urlCategoryListenArray = urlSearch.getAll("category");
@@ -22,23 +21,8 @@ const CategoryProduct = () => {
 
   const [sortBy, setSortBy] = useState("");
 
-  const fetchData = async () => {
-    const response = await fetch(SummaryApi.filterProduct.url, {
-      method: SummaryApi.filterProduct.method,
-      headers: {
-        "content-type": "application/json",
-      },
-      body: JSON.stringify({
-        category: filterCategoryList,
-      }),
-    });
-
-    const dataResponse = await response.json();
-    setData(dataResponse?.data || []);
-  };
-
   const handleSelectCategory = (e) => {
-    const { name, value, checked } = e.target;
+    const { value, checked } = e.target;
 
     setSelectCategory((prev) => {
       return {
@@ -49,6 +33,21 @@ const CategoryProduct = () => {
   };
 
   useEffect(() => {
+    const fetchData = async () => {
+      const response = await fetch(SummaryApi.filterProduct.url, {
+        method: SummaryApi.filterProduct.method,
+        headers: {
+          "content-type": "application/json",
+        },
+        body: JSON.stringify({
+          category: filterCategoryList,
+        }),
+      });
+
+      const dataResponse = await response.json();
+      setData(dataResponse?.data || []);
+    };
+
     fetchData();
   }, [filterCategoryList]);
 
@@ -73,7 +72,7 @@ const CategoryProduct = () => {
     });
 
     navigate("/product-category?" + urlFormat.join(""));
-  }, [selectCategory]);
+  }, [selectCategory, navigate]);
 
   const handleOnChangeSortBy = (e) => {
     const { value } = e.target;
@@ -137,7 +136,7 @@ const CategoryProduct = () => {
             <form className="flex flex-col gap-2 py-2 text-sm">
               {productCategory.map((categoryName, index) => {
                 return (
-                  <div className="flex items-center gap-3">
+                  <div className="flex items-center gap-3" key={index}>
                     <input
                       type="checkbox"
                       name={"category"}
@@ -163,9 +162,7 @@ const CategoryProduct = () => {
           </p>
 
           <div className="min-h-[calc(100vh-120px)] overflow-y-scroll max-h-[calc(100vh-120px)]">
-            {data.length !== 0 && !loading && (
-              <VerticalCard data={data} loading={loading} />
-            )}
+            {data.length !== 0 && <VerticalCard data={data} />}
           </div>
         </div>
       </div>

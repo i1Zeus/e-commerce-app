@@ -9,9 +9,8 @@ import fetchCategoryWiseProduct from "../helpers/fetchCategoryWiseProduct";
 const HorizontalCardProduct = ({ category, heading }) => {
   const [data, setData] = useState([]);
   const [loading, setLoading] = useState(true);
-  const loadingList = new Array(13).fill(null);
+  const loadingList = new Array(5).fill(null);
 
-  const [scroll, setScroll] = useState(0);
   const scrollElement = useRef();
 
   const { fetchUserAddToCart } = useContext(Context);
@@ -21,18 +20,18 @@ const HorizontalCardProduct = ({ category, heading }) => {
     fetchUserAddToCart();
   };
 
-  const fetchData = async () => {
-    setLoading(true);
-    const categoryProduct = await fetchCategoryWiseProduct(category);
-    setLoading(false);
-
-    console.log("horizontal data", categoryProduct.data);
-    setData(categoryProduct?.data);
-  };
-
   useEffect(() => {
+    const fetchData = async () => {
+      setLoading(true);
+      const categoryProduct = await fetchCategoryWiseProduct(category);
+      setLoading(false);
+
+      console.log("horizontal data", categoryProduct.data);
+      setData(categoryProduct?.data);
+    };
+
     fetchData();
-  }, []);
+  }, [category]);
 
   const scrollRight = () => {
     scrollElement.current.scrollLeft += 300;
@@ -82,12 +81,14 @@ const HorizontalCardProduct = ({ category, heading }) => {
           : data.map((product, index) => {
               return (
                 <Link
+                  key={index}
                   to={"product/" + product?._id}
                   className="w-full min-w-[280px] md:min-w-[320px] max-w-[280px] md:max-w-[320px] h-36 bg-white rounded-sm shadow flex"
                 >
                   <div className="bg-slate-200 h-full p-4 min-w-[120px] md:min-w-[145px]">
                     <img
                       src={product.productImage[0]}
+                      alt="product"
                       className="hover:scale-110 object-scale-down h-full transition-all"
                     />
                   </div>

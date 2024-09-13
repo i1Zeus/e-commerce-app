@@ -8,7 +8,7 @@ const Cart = () => {
   const [data, setData] = useState([]);
   const [loading, setLoading] = useState(false);
   const context = useContext(Context);
-  const loadingCart = new Array(4).fill(null);
+  const loadingCart = new Array(5).fill(null);
 
   const fetchData = async () => {
     const response = await fetch(SummaryApi.addToCartProductView.url, {
@@ -26,11 +26,10 @@ const Cart = () => {
     }
   };
 
-  const handleLoading = async () => {
-    await fetchData();
-  };
-
   useEffect(() => {
+    const handleLoading = async () => {
+      await fetchData();
+    };
     setLoading(true);
     handleLoading();
     setLoading(false);
@@ -135,6 +134,7 @@ const Cart = () => {
                     <div className="bg-slate-200 w-32 h-32">
                       <img
                         src={product?.productId?.productImage[0]}
+                        alt="product"
                         className="mix-blend-multiply object-scale-down w-full h-full"
                       />
                     </div>

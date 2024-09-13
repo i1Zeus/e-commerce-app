@@ -19,7 +19,7 @@ const ProductDetails = () => {
   });
   const params = useParams();
   const [loading, setLoading] = useState(true);
-  const productImageListLoading = new Array(4).fill(null);
+  const productImageListLoading = new Array(5).fill(null);
   const [activeImage, setActiveImage] = useState("");
 
   const [zoomImageCoordinate, setZoomImageCoordinate] = useState({

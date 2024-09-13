@@ -9,9 +9,8 @@ import fetchCategoryWiseProduct from "../helpers/fetchCategoryWiseProduct";
 const VerticalCardProduct = ({ category, heading }) => {
   const [data, setData] = useState([]);
   const [loading, setLoading] = useState(true);
-  const loadingList = new Array(13).fill(null);
+  const loadingList = new Array(5).fill(null);
 
-  const [scroll, setScroll] = useState(0);
   const scrollElement = useRef();
 
   const { fetchUserAddToCart } = useContext(Context);
@@ -21,18 +20,18 @@ const VerticalCardProduct = ({ category, heading }) => {
     fetchUserAddToCart();
   };
 
-  const fetchData = async () => {
-    setLoading(true);
-    const categoryProduct = await fetchCategoryWiseProduct(category);
-    setLoading(false);
-
-    console.log("horizontal data", categoryProduct.data);
-    setData(categoryProduct?.data);
-  };
-
   useEffect(() => {
+    const fetchData = async () => {
+      setLoading(true);
+      const categoryProduct = await fetchCategoryWiseProduct(category);
+      setLoading(false);
+
+      console.log("horizontal data", categoryProduct.data);
+      setData(categoryProduct?.data);
+    };
+
     fetchData();
-  }, []);
+  }, [category]);
 
   const scrollRight = () => {
     scrollElement.current.scrollLeft += 300;
@@ -65,7 +64,10 @@ const VerticalCardProduct = ({ category, heading }) => {
         {loading
           ? loadingList.map((product, index) => {
               return (
-                <div className="w-full min-w-[280px]  md:min-w-[320px] max-w-[280px] md:max-w-[320px]  bg-white rounded-sm shadow ">
+                <div
+                  key={index}
+                  className="w-full min-w-[280px]  md:min-w-[320px] max-w-[280px] md:max-w-[320px]  bg-white rounded-sm shadow "
+                >
                   <div className="bg-slate-200 h-48 p-4 min-w-[280px] md:min-w-[145px] flex justify-center items-center animate-pulse"></div>
                   <div className="grid gap-3 p-4">
                     <h2 className="md:text-lg text-ellipsis line-clamp-1 animate-pulse bg-slate-200 p-1 py-2 text-base font-medium text-black rounded-full"></h2>
@@ -82,12 +84,14 @@ const VerticalCardProduct = ({ category, heading }) => {
           : data.map((product, index) => {
               return (
                 <Link
+                  key={index}
                   to={"product/" + product?._id}
                   className="w-full min-w-[280px]  md:min-w-[320px] max-w-[280px] md:max-w-[320px]  bg-white rounded-sm shadow "
                 >
                   <div className="bg-slate-200 h-48 p-4 min-w-[280px] md:min-w-[145px] flex justify-center items-center">
                     <img
                       src={product.productImage[0]}
+                      alt="product"
                       className="hover:scale-110 mix-blend-multiply object-scale-down h-full transition-all"
                     />
                   </div>

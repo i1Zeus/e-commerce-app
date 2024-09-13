@@ -10,16 +10,15 @@ const SearchProduct = () => {
 
   console.log("query", query.search);
 
-  const fetchProduct = async () => {
-    setLoading(true);
-    const response = await fetch(SummaryApi.searchProduct.url + query.search);
-    const dataResponse = await response.json();
-    setLoading(false);
-
-    setData(dataResponse.data);
-  };
-
   useEffect(() => {
+    const fetchProduct = async () => {
+      setLoading(true);
+      const response = await fetch(SummaryApi.searchProduct.url + query.search);
+      const dataResponse = await response.json();
+      setLoading(false);
+
+      setData(dataResponse.data);
+    };
     fetchProduct();
   }, [query]);
 

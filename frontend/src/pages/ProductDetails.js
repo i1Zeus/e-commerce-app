@@ -32,27 +32,25 @@ const ProductDetails = () => {
 
   const navigate = useNavigate();
 
-  const fetchProductDetails = async () => {
-    setLoading(true);
-    const response = await fetch(SummaryApi.productDetails.url, {
-      method: SummaryApi.productDetails.method,
-      headers: {
-        "content-type": "application/json",
-      },
-      body: JSON.stringify({
-        productId: params?.id,
-      }),
-    });
-    setLoading(false);
-    const dataResponse = await response.json();
-
-    setData(dataResponse?.data);
-    setActiveImage(dataResponse?.data?.productImage[0]);
-  };
-
-  console.log("data", data);
-
   useEffect(() => {
+    const fetchProductDetails = async () => {
+      setLoading(true);
+      const response = await fetch(SummaryApi.productDetails.url, {
+        method: SummaryApi.productDetails.method,
+        headers: {
+          "content-type": "application/json",
+        },
+        body: JSON.stringify({
+          productId: params?.id,
+        }),
+      });
+      setLoading(false);
+      const dataResponse = await response.json();
+
+      setData(dataResponse?.data);
+      setActiveImage(dataResponse?.data?.productImage[0]);
+    };
+
     fetchProductDetails();
   }, [params]);
 
@@ -64,7 +62,6 @@ const ProductDetails = () => {
     (e) => {
       setZoomImage(true);
       const { left, top, width, height } = e.target.getBoundingClientRect();
-      console.log("coordinate", left, top, width, height);
 
       const x = (e.clientX - left) / width;
       const y = (e.clientY - top) / height;
@@ -74,7 +71,7 @@ const ProductDetails = () => {
         y,
       });
     },
-    [zoomImageCoordinate]
+    [] // Removed zoomImageCoordinate as dependency
   );
 
   const handleLeaveImageZoom = () => {
@@ -100,6 +97,7 @@ const ProductDetails = () => {
           <div className="h-[300px] w-[300px] lg:h-96 lg:w-96 bg-slate-200 relative p-2">
             <img
               src={activeImage}
+              alt={data?.productName} // Added alt text
               className="mix-blend-multiply object-scale-down w-full h-full"
               onMouseMove={handleZoomImage}
               onMouseLeave={handleLeaveImageZoom}
@@ -144,6 +142,7 @@ const ProductDetails = () => {
                     >
                       <img
                         src={imgURL}
+                        alt={`Product ${index + 1}`} // Added alt text
                         className="mix-blend-multiply object-scale-down w-full h-full cursor-pointer"
                         onMouseEnter={() => handleMouseEnterProduct(imgURL)}
                         onClick={() => handleMouseEnterProduct(imgURL)}
@@ -160,7 +159,9 @@ const ProductDetails = () => {
         {loading ? (
           <div className="grid w-full gap-1">
             <p className="bg-slate-200 animate-pulse lg:h-8 inline-block w-full h-6 rounded-full"></p>
-            <h2 className="lg:text-4xl lg:h-8 bg-slate-200 animate-pulse w-full h-6 text-2xl font-medium"></h2>
+            <h2 className="lg:text-4xl lg:h-8 bg-slate-200 animate-pulse w-full h-6 text-2xl font-medium">
+              {data?.productName || "Loading"}
+            </h2>
             <p className="capitalize text-slate-400 bg-slate-200 min-w-[100px] animate-pulse h-6 lg:h-8  w-full"></p>
 
             <div className="bg-slate-200 lg:h-8 animate-pulse flex items-center w-full h-6 gap-1 text-red-600"></div>

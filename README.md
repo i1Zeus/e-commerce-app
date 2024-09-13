@@ -57,9 +57,16 @@ To run this project locally, follow these steps:
    4. Add the connection string to the .env file:
 
    ```env
+   # BackEnd .env
    MONGODB_URI = ""
    TOKEN_SECRET_KEY = "ANY SECRET KEY MADE OF RANDOM CHARACTERS"
    FRONTEND_URL = "USUALLY http://localhost:3000"
+   ```
+
+   ```env
+   # FrontEnd .env
+   REACT_APP_CLOUD_NAME_CLOUDINARY = "The Name of Cloudinary"
+   BACKEND_URL = "USUALLY http://localhost:8000"
    ```
 
 DONE 😉❤️

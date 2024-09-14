@@ -17,11 +17,12 @@ app.use(cookieParser());
 
 app.use("/api", router);
 
-const PORT = 8080;
+const PORT = 8000;
 
 connectDB().then(() => {
   app.listen(PORT, () => {
-    console.log("connected to DB");
-    console.log("Server is running " + `http://localhost:${PORT}`);
+    console.log(
+      "Connected to Mongoose \nServer is running " + `http://localhost:${PORT}`
+    );
   });
 });

@@ -1,4 +1,4 @@
-const backendDomain = process.env.BACKEND_URL;
+const backendDomain = "http://localhost:8000";
 
 const SummaryApi = {
   signUP: {

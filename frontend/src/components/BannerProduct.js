@@ -79,7 +79,7 @@ const BannerProduct = () => {
                 key={imageURl}
                 style={{ transform: `translateX(-${currentImage * 100}%)` }}
               >
-                <img src={imageURl} className="w-full h-full" />
+                <img src={imageURl} className="w-full h-full" alt="product" />
               </div>
             );
           })}
@@ -94,7 +94,11 @@ const BannerProduct = () => {
                 key={imageURl}
                 style={{ transform: `translateX(-${currentImage * 100}%)` }}
               >
-                <img src={imageURl} className="object-cover w-full h-full" />
+                <img
+                  src={imageURl}
+                  className="object-cover w-full h-full"
+                  alt="product"
+                />
               </div>
             );
           })}

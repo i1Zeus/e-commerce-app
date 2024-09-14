@@ -17,11 +17,11 @@ app.use(cookieParser());
 
 app.use("/api", router);
 
-const PORT = 8080 || process.env.PORT;
+const PORT = 8080;
 
 connectDB().then(() => {
   app.listen(PORT, () => {
     console.log("connected to DB");
-    console.log("Server is running " + PORT);
+    console.log("Server is running " + `http://localhost:${PORT}`);
   });
 });

@@ -18,18 +18,17 @@ const CategoryWiseProductDisplay = ({ category, heading }) => {
     fetchUserAddToCart();
   };
 
+  const fetchData = async () => {
+    setLoading(true);
+    const categoryProduct = await fetchCategoryWiseProduct(category);
+    setLoading(false);
+
+    console.log("horizontal data", categoryProduct.data);
+    setData(categoryProduct?.data);
+  };
   useEffect(() => {
-    const fetchData = async () => {
-      setLoading(true);
-      const categoryProduct = await fetchCategoryWiseProduct(category);
-      setLoading(false);
-
-      console.log("horizontal data", categoryProduct.data);
-      setData(categoryProduct?.data);
-    };
-
     fetchData();
-  }, [category]);
+  }, []);
 
   return (
     <div className="container relative px-4 mx-auto my-6">

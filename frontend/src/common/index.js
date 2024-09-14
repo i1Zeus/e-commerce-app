@@ -1,4 +1,4 @@
-const backendDomain = "http://localhost:8000";
+const backendDomain = "http://localhost:8080";
 
 const SummaryApi = {
   signUP: {
@@ -50,7 +50,7 @@ const SummaryApi = {
     method: "post",
   },
   addToCartProduct: {
-    url: `${backendDomain}/api/addToCart`,
+    url: `${backendDomain}/api/addtocart`,
     method: "post",
   },
   addToCartProductCount: {

@@ -3,12 +3,12 @@
 ## Table of Contents
 
 - [E-Commerce-App Project](#e-commerce-app-project)
-   - [Table of Contents](#table-of-contents)
-   - [General Info](#general-info)
-   - [Technologies](#technologies)
-   - [Setup](#setup)
-   - [Usage](#usage)
-   - [Contact](#contact)
+  - [Table of Contents](#table-of-contents)
+  - [General Info](#general-info)
+  - [Technologies](#technologies)
+  - [Setup](#setup)
+  - [Usage](#usage)
+  - [Contact](#contact)
 
 ## General Info
 

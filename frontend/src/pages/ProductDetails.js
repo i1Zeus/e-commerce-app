@@ -200,9 +200,11 @@ const ProductDetails = () => {
               <p className="text-red-600">
                 {displayINRCurrency(data.sellingPrice)}
               </p>
-              <p className="text-slate-400 line-through">
-                {displayINRCurrency(data.price)}
-              </p>
+              {data.sellingPrice < data.price && (
+                <p className="text-slate-400 line-through">
+                  {displayINRCurrency(data.price)}
+                </p>
+              )}
             </div>
 
             <div className="flex items-center gap-3 my-2">

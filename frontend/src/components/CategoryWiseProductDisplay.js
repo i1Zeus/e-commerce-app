@@ -80,12 +80,14 @@ const CategoryWiseProductDisplay = ({ category, heading }) => {
                       {product?.category}
                     </p>
                     <div className="flex gap-3">
-                      <p className="font-medium text-red-600">
+                      <p className="text-red-600">
                         {displayINRCurrency(product?.sellingPrice)}
                       </p>
-                      <p className="text-slate-500 line-through">
-                        {displayINRCurrency(product?.price)}
-                      </p>
+                      {product?.sellingPrice < product?.price && (
+                        <p className="text-slate-400 line-through">
+                          {displayINRCurrency(product?.price)}
+                        </p>
+                      )}
                     </div>
                     <button
                       className="text-sm bg-red-600 hover:bg-red-700 text-white px-3 py-0.5 rounded-full"

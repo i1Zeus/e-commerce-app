@@ -1,7 +1,7 @@
 const displayINRCurrency = (num) => {
-  const formatter = new Intl.NumberFormat("ar-IQ", {
+  const formatter = new Intl.NumberFormat("en-IQ", {
     style: "currency",
-    currency: "IQD",
+    currency: "iqd",
     minimumFractionDigits: 2,
   });
 

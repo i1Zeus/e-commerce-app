@@ -58,21 +58,18 @@ const ProductDetails = () => {
     setActiveImage(imageURL);
   };
 
-  const handleZoomImage = useCallback(
-    (e) => {
-      setZoomImage(true);
-      const { left, top, width, height } = e.target.getBoundingClientRect();
+  const handleZoomImage = useCallback((e) => {
+    setZoomImage(true);
+    const { left, top, width, height } = e.target.getBoundingClientRect();
 
-      const x = (e.clientX - left) / width;
-      const y = (e.clientY - top) / height;
+    const x = (e.clientX - left) / width;
+    const y = (e.clientY - top) / height;
 
-      setZoomImageCoordinate({
-        x,
-        y,
-      });
-    },
-    [] // Removed zoomImageCoordinate as dependency
-  );
+    setZoomImageCoordinate({
+      x,
+      y,
+    });
+  }, []);
 
   const handleLeaveImageZoom = () => {
     setZoomImage(false);
@@ -138,11 +135,11 @@ const ProductDetails = () => {
                   return (
                     <div
                       className="bg-slate-200 w-20 h-20 p-1 rounded"
-                      key={imgURL}
+                      key={imgURL || index}
                     >
                       <img
                         src={imgURL}
-                        alt={`Product ${index + 1}`} // Added alt text
+                        alt={`Product ${index + 1}`}
                         className="mix-blend-multiply object-scale-down w-full h-full cursor-pointer"
                         onMouseEnter={() => handleMouseEnterProduct(imgURL)}
                         onClick={() => handleMouseEnterProduct(imgURL)}

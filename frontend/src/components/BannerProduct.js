@@ -33,7 +33,7 @@ const BannerProduct = () => {
   };
 
   const prevImage = () => {
-    if (currentImage != 0) {
+    if (currentImage !== 0) {
       setCurrentImage((prev) => prev - 1);
     }
   };
@@ -51,10 +51,10 @@ const BannerProduct = () => {
   }, [currentImage]);
 
   return (
-    <div className=" container px-4 mx-auto rounded">
+    <div className="container px-4 mx-auto rounded">
       <div className="md:h-72 bg-slate-200 relative w-full h-56">
         <div className="md:flex absolute z-10 items-center hidden w-full h-full">
-          <div className=" flex justify-between w-full text-2xl">
+          <div className="flex justify-between w-full text-2xl">
             <button
               onClick={prevImage}
               className="p-1 bg-white rounded-full shadow-md"

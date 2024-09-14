@@ -3,12 +3,12 @@
 ## Table of Contents
 
 - [E-Commerce-App Project](#e-commerce-app-project)
-  - [Table of Contents](#table-of-contents)
-  - [General Info](#general-info)
-  - [Technologies](#technologies)
-  - [Setup](#setup)
-  - [Usage](#usage)
-  - [Contact](#contact)
+   - [Table of Contents](#table-of-contents)
+   - [General Info](#general-info)
+   - [Technologies](#technologies)
+   - [Setup](#setup)
+   - [Usage](#usage)
+   - [Contact](#contact)
 
 ## General Info
 
@@ -65,8 +65,7 @@ To run this project locally, follow these steps:
 
    ```env
    # FrontEnd .env
-   REACT_APP_CLOUD_NAME_CLOUDINARY = "The Name of Cloudinary"
-   BACKEND_URL = "USUALLY http://localhost:8000"
+   REACT_APP_CLOUD_NAME_CLOUDINARY = ""
    ```
 
 DONE 😉❤️

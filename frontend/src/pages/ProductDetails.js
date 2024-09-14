@@ -196,7 +196,7 @@ const ProductDetails = () => {
               <FaStarHalf />
             </div>
 
-            <div className="lg:text-3xl flex items-center gap-2 my-1 text-2xl font-medium">
+            <div className="lg:text-2xl flex items-center gap-2 my-1 text-xl font-medium">
               <p className="text-red-600">
                 {displayINRCurrency(data.sellingPrice)}
               </p>
